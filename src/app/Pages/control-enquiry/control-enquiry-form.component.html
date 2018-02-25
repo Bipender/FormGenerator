@@ -1,0 +1,45 @@
+<div style="text-align:center"><h1>Dynamic Form</h1></div>
+<div style="margin:10px">
+    <form (ngSubmit)="addControls()" [formGroup]="form">
+  
+      <div *ngFor="let control of controls" class="form-row">
+        <dynamic-form-generator [control]="control" [form]="form"></dynamic-form-generator>
+      </div>
+  
+      <div class="form-row" style="margin-top:5px">
+        <button type="submit" [disabled]="!form.valid" class="btn btn-dark">Add Contol</button>
+      </div>
+    </form>
+  
+    <!-- <div *ngIf="payLoad" class="form-row">
+      <strong>Saved the following values</strong><br>{{payLoad}}
+    </div> -->
+  </div>
+  <div [hidden]="!includedControls.length" style="
+  margin-left: 170px;
+  margin-right: 170px;
+">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Control Type</th>
+          <th>Input Type</th>
+          <th>Control Title</th>
+          <th>Default Value</th>
+          <th>Validator</th>
+          <th>Order</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of includedControls">
+          <td>{{item.controlType}}</td>
+          <td>{{item.textBoxType}}</td>
+          <td>{{item.title}}</td>
+          <td>{{item.value}}</td>
+          <td>{{item.validator}}</td>
+          <td>{{item.order}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="generateForm()" class="btn btn-succes">Generate Form</button>
+  </div>

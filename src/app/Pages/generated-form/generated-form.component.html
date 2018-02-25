@@ -1,0 +1,19 @@
+<div style="text-align:center"><h1>Generated Form</h1></div>
+<div style="margin:10px">
+    <form (ngSubmit)="onSubmit()" [formGroup]="generatedForm">
+  
+      <div *ngFor="let control of formControls" class="form-row">
+        <dynamic-form-generator [control]="control" [form]="generatedForm"></dynamic-form-generator>
+      </div>
+  
+      <div class="form-row" style="margin-top:5px">
+        <button type="submit" [disabled]="!generatedForm.valid" class="btn btn-dark">Submit</button>
+        
+      </div>
+    </form>
+  
+    <div *ngIf="payLoad" class="form-row">
+      <strong>Saved the following values</strong><br>{{payLoad}}
+    </div>
+  </div>
+  
